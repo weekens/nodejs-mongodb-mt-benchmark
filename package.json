@@ -23,7 +23,7 @@
   "homepage": "https://github.com/weekens/nodejs-mongodb-mt-benchmark#readme",
   "dependencies": {
     "bluebird": "^3.5.1",
-    "comedy": "^1.2.4",
+    "comedy": "^1.2.5",
     "mongodb": "^2.2.33",
     "toobusy-js": "^0.5.1",
     "underscore": "^1.8.3"
