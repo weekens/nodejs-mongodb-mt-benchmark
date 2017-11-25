@@ -5,7 +5,7 @@ single and multiple threads (processes). The data inserted and queried is a 1 KB
 
 # Running
 
-To run benchmark, execute the following commands:
+To run benchmark, execute the following command:
 
 ```
 $ npm install && npm start
