@@ -44,19 +44,31 @@ var actorSystem = actors();
 actorSystem
   .rootActor()
   .then(rootActor => {
-    return P.each(threadCounts, threadCount => {
-      console.log(`=== Running benchmark in ${threadCount} thread(s) ===`);
+    return P
+      .reduce(threadCounts, (memo, threadCount) => {
+        console.log(`=== Running benchmark in ${threadCount} thread(s) ===`);
 
-      return rootActor
-        .createChild(BenchmarkRunnerActor)
-        .then(runner => {
-          return runner.sendAndReceive('run', threadCount)
-            .then(result => {
-              console.log(`Benchmark result for thread count ${threadCount}:`);
-              console.log(JSON.stringify(result, null, 2));
-            })
-            .finally(() => runner.destroy());
-        });
-    });
+        return rootActor
+          .createChild(BenchmarkRunnerActor)
+          .then(runner => {
+            return runner.sendAndReceive('run', threadCount)
+              .then(result => {
+                console.log(`==> Benchmark result for thread count ${threadCount}:`);
+                console.log(JSON.stringify(result, null, 2));
+
+                memo[`Thread count ${threadCount}`] = {
+                  'Write throughput': result.write['Average throughput (requests per second)'],
+                  'Read throughput': result.read['Average throughput (requests per second)']
+                };
+
+                return memo;
+              })
+              .finally(() => runner.destroy());
+          });
+      }, {})
+      .then(finalResult => {
+        console.log('=== Final result: ===');
+        console.log(JSON.stringify(finalResult, null, 2));
+      });
   })
   .finally(() => actorSystem.destroy());
