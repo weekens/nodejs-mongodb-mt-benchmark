@@ -1,0 +1,36 @@
+{
+  "name": "nodejs-mongodb-mt-benchmark",
+  "version": "0.0.1",
+  "description": "NodeJS MongoDB multithreaded benchmark",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weekens/nodejs-mongodb-mt-benchmark.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "benchmark"
+  ],
+  "author": "Victor Isaev (weekens@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weekens/nodejs-mongodb-mt-benchmark/issues"
+  },
+  "homepage": "https://github.com/weekens/nodejs-mongodb-mt-benchmark#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "comedy": "^1.2.4",
+    "mongodb": "^2.2.33",
+    "toobusy-js": "^0.5.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-jsdoc": "^3.2.0"
+  }
+}
